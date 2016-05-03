@@ -1,8 +1,8 @@
 {
   "bugs": {
-    "url": "https://github.com/koca/masonry-grav-theme/issues"
+    "url": "https://github.com/koca/grav-theme-masonry/issues"
   },
-  "homepage": "https://github.com/koca/masonry-grav-theme",
+  "homepage": "https://github.com/koca/grav-theme-masonry",
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-concat-css": "^2.2.0",
