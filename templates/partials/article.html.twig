@@ -1,0 +1,19 @@
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting" role="article">
+    {% if post.header.image %}
+        <figure class="post-image" itemprop="image">
+            <a href="{{ post.url }}" class="js-ajax-link"><img src="{{ post.media[post.header.image].cropResize(350, 350).url }}" width="100%" height="100%" alt=""></a>
+        </figure>
+    {% endif %}
+    <header class="post-header">
+        <h2 class="post-title" itemprop="name"><a href="{{post.url}}" itemprop="url">{{post.title}}</a></h2>
+    </header>
+    <section class="post-excerpt" itemprop="description">        
+        <p>{{ post.content | striptags | truncate(140) }} <a class="read-more" href="{{post.url}}">Read More</a></p>
+    </section>
+    <footer class="post-meta">
+        {% if post.taxonomy.tag|length > 0 %}
+            {% for tag in post.taxonomy.tag %}<span class="post-tag-{{tag}}"><a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a></span>{%if not loop.last %}, {% endif %}{% endfor %}
+        {% endif %}
+        <time class="post-date" datetime="{{ post.date | date(site.date_short) }}">{{ post.date | date(site.date_short) }}</time>
+    </footer>
+</article>

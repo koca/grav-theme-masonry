@@ -1,0 +1,17 @@
+<input type="checkbox" id="show-menu" class="show-menu" />
+<div class="nav">
+    <h3 class="nav-title">Menu</h3>
+    <a href="#" class="nav-close">
+        <span class="hidden">Close</span>
+    </a>
+    <ul>
+        {% for page in pages.children %}
+        {% if page.visible %}
+        {% set current_page = (page.active or page.activeChild) ? 'nav-current' : '' %}
+        <li class="nav-{{page.slug}} {{ current_page }}" role="presentation"><a href="{{ page.url }}">{{ page.menu }}</a></li>
+        {% endif %}
+        {% endfor %}
+    </ul>
+    <a class="subscribe-button icon-feed" href="{{ base_url }}/blog.rss">Subscribe</a>
+</div>
+<span class="nav-cover"></span>

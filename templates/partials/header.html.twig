@@ -1,0 +1,8 @@
+<header class="main-header post-head {% if page.header.image %}" style="background-image: url({{ page.media[page.header.image].url }}){% else %}no-cover{% endif %}">
+    <nav class="main-nav {% if page.header.image %}overlay{% endif %} clearfix">
+        {% if site.logo %}
+            <a class="blog-logo" href="{{base_url}}"><img src="{{ theme_url }}/images/{{site.logo}}" alt="{{ site.author.title}}" /></a>
+        {% endif %}
+        <a class="menu-button icon-menu" href="#"><span class="word">Menu</span></a>
+    </nav>
+</header>

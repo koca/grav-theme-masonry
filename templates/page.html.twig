@@ -1,0 +1,27 @@
+{% embed 'partials/base.html.twig' %}
+
+{% block body %}
+<body class="post-template nav-closed" itemscope itemtype="http://schema.org/Article">
+{% endblock %}
+
+{% block content %}
+
+{% include 'partials/header.html.twig' %}
+
+<main class="content" role="main">
+    <article class="post page">
+        <header class="post-header">
+            {% include 'partials/breadcrumbs.html.twig' %}
+            <h1 class="post-title">{{page.title}}</h1>
+        </header>
+        <section class="post-content">
+            {{content}}
+        </section>
+    </article>
+</main>
+
+{% endblock %}
+
+{% block footer %}{% endblock %}
+
+{% endembed %}

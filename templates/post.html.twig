@@ -1,0 +1,112 @@
+{% embed 'partials/base.html.twig' %}
+
+{% block body %}
+<body class="post-template nav-closed" itemscope itemtype="http://schema.org/Article">
+{% endblock %}
+
+{% block content %}
+
+{% include 'partials/header.html.twig' %}
+ 
+<main class="content" role="main">
+    <article class="post">
+        <header class="post-header">
+            {% include 'partials/breadcrumbs.html.twig' %}
+            <h1 class="post-title">{{page.title}}</h1>
+            <section class="post-meta">
+               <time class="post-date" datetime="{{ page.date | date(site.date_short) }}">{{ page.date | date(site.date_short) }}</time>
+                {% if page.taxonomy.tag|length > 0 %}
+                    on {% for tag in page.taxonomy.tag %}<span class="post-tag-{{tag}}"><a href="{{ base_url }}/tag{{ config.system.param_sep }}{{ tag }}">{{ tag }}</a></span>{%if not loop.last %}, {% endif %}{% endfor %}
+                {% endif %}
+            </section>
+        </header>
+
+        <section class="post-content">
+            {{content}}
+            <div id="disqus_thread"></div>
+            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+        </section>
+
+        <footer class="post-footer">
+            {%if site.author %}
+                {%if site.author.image %}
+                    <figure class="author-image">
+                        <a class="img" href="{{base_url}}" style="background-image: url({{ post.media[post.header.image].url }})">
+                            <span class="hidden">{{site.author.name}}'s Picture</span>
+                        </a>
+                    </figure>
+                {% endif %}
+                <section class="author">
+                    <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
+    
+                    {%if site.author.bio %}
+                        <p>{{site.author.bio}}</p>
+                    {% else %}
+                        <p>Read <a href="{{base_url}}">more posts</a> by this author.</p>
+                    {% endif %}
+                    <div class="author-meta">
+                        {% if site.author.location %}<span class="author-location icon-location">{{site.author.location}}</span>{% endif %}
+                        {% if site.author.website %}<span class="author-link icon-link"><a href="{{site.author.website}}">{{site.author.website}}</a></span>{% endif %}
+                    </div>
+                </section>
+            {% endif %}
+
+            <section class="share">
+                <h4>Share this post</h4>
+                <a class="icon-twitter" href="https://twitter.com/share?text={{page.title | escape}}&amp;url={{page.url(true)}}"
+                    onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+                    <span class="hidden">Twitter</span>
+                </a>
+                <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u={{page.url(true)}}"
+                    onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+                    <span class="hidden">Facebook</span>
+                </a>
+                <a class="icon-google-plus" href="https://plus.google.com/share?url={{page.url(true)}}"
+                   onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+                    <span class="hidden">Google+</span>
+                </a>
+            </section>
+
+        </footer>
+
+    </article>
+</main>
+
+<aside class="read-next">
+    {% if not page.isFirst %}
+    <a class="read-next-story {% if page.nextSibling.header.image %}" style="background-image: url({{ page.nextSibling.media[page.nextSibling.header.image].url }}){% else %}no-cover{% endif %}" href="{{page.nextSibling.url}}">
+        <section class="post">
+            <h2>{{page.nextSibling.title}}</h2>
+            <p>{{ page.nextSibling.content | striptags | truncate(140) }}&hellip;</p>
+        </section>
+    </a>
+    {% endif %}
+    {% if not page.isLast %}
+    <a class="read-next-story prev {% if page.prevSibling.header.image %}" style="background-image: url({{ page.prevSibling.media[page.prevSibling.header.image].url }}){% else %}no-cover{% endif %}" href="{{page.prevSibling.url}}">
+        <section class="post">
+            <h2>{{page.prevSibling.title}}</h2>
+            <p>{{ page.prevSibling.content | striptags | truncate(140) }}&hellip;</p>
+        </section>
+    </a>
+    {% endif %}
+</aside>
+
+
+{% endblock %}
+
+{% block bottom %}
+
+    {% if site.disqus %}
+        <script>
+        (function() {
+        var d = document, s = d.createElement('script');
+        s.src = '//{{site.disqus}}.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+        </script>
+    {% endif %}
+
+{% endblock %}
+
+{% endembed %}

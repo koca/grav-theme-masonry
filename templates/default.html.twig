@@ -1,0 +1,36 @@
+{% extends 'partials/base.html.twig' %} 
+{% set collection = page.collection() %} 
+
+{% block content %}
+
+<header class="main-header {% if page.header.cover %}" style="background-image: url({{ page.media[page.header.cover].url }}) {% else %} no-cover {% endif %}">
+    <nav class="main-nav overlay clearfix">
+        {% if site.logo %}
+            <a class="blog-logo" href="{{base_url}}"><img src="{{ theme_url }}/images/{{site.logo}}" alt="{{ site.title}}" width="100%" height="100%" /></a>
+        {% endif %}
+
+        <a class="menu-button icon-menu" href="#">
+            <label for="show-menu" class="word">Menu</label>
+        </a>
+    </nav>
+    <div class="vertical">
+        <div class="main-header-content inner">
+            <h1 class="page-title">{{ site.author.name }}</h1>
+            <h2 class="page-description">{{ site.description}}</h2>
+        </div>
+    </div>
+    <a class="scroll-down icon-arrow-left" href="#content" data-offset="-45"><span class="hidden">Scroll Down</span></a>
+</header>
+
+<main id="content" class="content" role="main">
+    <div class="wrapper">
+        <section class="masonry">
+            {% for post in collection %} {% include 'partials/article.html.twig' %} {% endfor %}
+        </section>
+    </div>
+    {% if config.plugins.pagination.enabled and collection.params.pagination %} 
+        {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination':collection.params.pagination} %} 
+    {% endif %}
+</main>
+
+{% endblock %}
