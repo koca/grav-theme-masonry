@@ -8,6 +8,14 @@ The **Masonry** theme for Grav is a direct port of the [Masonry Theme for Ghost]
 
 Installing the Masonry theme can be done in one of two ways. With GPM (Grav Package Manager) installation method enables you to quickly and easily install the theme with a simple terminal command, while the manual method enables you to do so via a zip file.
 
+### GPM Installation (Preferred)
+
+The simplest way to install this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
+
+    bin/gpm install masonry
+
+This will install the Masonry theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/masonry`.
+
 ### Manual Installation
 
 To install this theme, just download the zip version of this repository and unzip it under `/your/site/grav/user/themes`. Then, rename the folder to `masonry`.
@@ -16,18 +24,28 @@ You should now have all the theme files under
 
     /your/site/grav/user/themes/masonry
 
-
-### GPM Installation (Preferred)
-
-***Not in grav themes repository, yet.*** The simplest way to install this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm) through your system's Terminal (also called the command line).  From the root of your Grav install type:
-
-    bin/gpm install NOT YET DON'T TRY
-
-This will install the Masonry theme into your `/user/themes` directory within Grav. Its files can be found under `/your/site/grav/user/themes/Masonry`.
-
 # Dependencies
 This theme requires [Pagination](https://github.com/getgrav/grav-plugin-pagination) plugin. And i highly recommend [Grav Admin](https://github.com/getgrav/grav-plugin-admin) plugin.
 
+# Skeleton
+The theme works best in combination with appropriate content and configuration. Please check out the [Mediator Skeleton Package](https://github.com/getgrav/grav-skeleton-mediator-site).
+
+## Pages Hierarchy
+`your/site/user/pages` should look like:
+```
+├── 01.blog (Main folder for blog posts)
+│   ├── default.md (blog settings)
+|   |── header.jpg (blog cover image if you want to)
+|   |
+│   ├── post-with-cover (folder for a blog post)
+│   │   ├── post.md 
+│   │   └── unsplash.jpg
+│   ├── tooling-grunt (folder for a blog post)
+│   │   └── post.md
+|
+└── 02.about (Page Folder)
+    └── page.md
+```
 
 # Configuration
 
@@ -55,7 +73,38 @@ disqus: disqususername
 logo: logofile.png
 ```
 
-## Cover Images
+## Blog Settings
+
+Sample `your/site/user/pages/01.blog/default.md` file
+
+```
+
+---
+#cover: header.jpg  this is optional...
+sitemap:
+    changefreq: weekly
+    priority: 1.03
+content:
+    items: '@self.children'
+    order:
+        by: date
+        dir: desc
+    limit: 8
+    pagination: true
+feed:
+    description: 'Sample Blog Description'
+    limit: 3
+pagination: true
+---
+
+```
+## Cover Image for Blog Home Page
+
+Go to the `your/site/user/pages/01.blog/default.md` file and add this line:
+
+    cover: header.jpg
+
+## Cover Images for Posts
 
 If you want to add cover images to your pages or posts add `image: covername.jpg` to your markdown file. Like so:
 
@@ -75,7 +124,7 @@ As development for the Masonry theme continues, new versions may become availabl
 
 The simplest way to update this theme is via the [Grav Package Manager (GPM)](http://learn.getgrav.org/advanced/grav-gpm). You can do this with this by navigating to the root directory of your Grav install using your system's Terminal (also called command line) and typing the following:
 
-    bin/gpm update Masonry
+    bin/gpm update masonry
 
 This command will check your Grav install to see if your Masonry theme is due for an update. If a newer release is found, you will be asked whether or not you wish to update. To continue, type `y` and hit enter. The theme will automatically update and clear Grav's cache.
 
