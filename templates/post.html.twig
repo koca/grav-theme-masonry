@@ -31,7 +31,7 @@
             {%if site.author %}
                 {%if site.author.image %}
                     <figure class="author-image">
-                        <a class="img" href="{{base_url}}" style="background-image: url({{ post.media[post.header.image].url }})">
+                        <a class="img" href="{{base_url}}" style="background-image: url({{ theme_url }}/images/{{ site.author.image }})">
                             <span class="hidden">{{site.author.name}}'s Picture</span>
                         </a>
                     </figure>
