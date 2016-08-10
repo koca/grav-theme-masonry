@@ -59,6 +59,8 @@ description: 'Thoughts, stories and ideas.'
 author:
   name: 'Mesut Koca'
   email: youremail@domain.com
+  # Avatar image optional (under your/site/user/themes/masonry/images/avatar.png)
+  image: avatar.png
   # Optional
   link: 'https://twitter.com/twitterusername'
   # Optional
