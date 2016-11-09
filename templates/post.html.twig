@@ -7,7 +7,7 @@
 {% block content %}
 
 {% include 'partials/header.html.twig' %}
- 
+
 <main class="content" role="main">
     <article class="post">
         <header class="post-header">
@@ -37,12 +37,16 @@
                     </figure>
                 {% endif %}
                 <section class="author">
-                    <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
-    
-                    {%if site.author.bio %}
-                        <p>{{site.author.bio}}</p>
+                    {%if page.header.author %}
+                        <h4><a href="{{base_url}}">{{page.header.author}}</a></h4>
+                        <p><a href="{{base_url}}">more posts</a> of {{page.header.author}}</p>
                     {% else %}
-                        <p>Read <a href="{{base_url}}">more posts</a> by this author.</p>
+                        <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
+                        {%if site.author.bio %}
+                            <p>{{site.author.bio}}</p>
+                        {% else %}
+                            <p>Read <a href="{{base_url}}">more posts</a> by this author.</p>
+                        {% endif %}
                     {% endif %}
                     <div class="author-meta">
                         {% if site.author.location %}<span class="author-location icon-location">{{site.author.location}}</span>{% endif %}
@@ -66,7 +70,9 @@
                     <span class="hidden">Google+</span>
                 </a>
             </section>
-
+            {% if config.plugins.comments.enabled %}
+                {% include 'partials/comments.html.twig' with {'page': page} %}
+            {% endif %}
         </footer>
 
     </article>
