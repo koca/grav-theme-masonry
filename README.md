@@ -25,7 +25,9 @@ You should now have all the theme files under
     /your/site/grav/user/themes/masonry
 
 # Dependencies
-This theme requires [Pagination](https://github.com/getgrav/grav-plugin-pagination) plugin. And i highly recommend [Grav Admin](https://github.com/getgrav/grav-plugin-admin) plugin.
+This theme requires [Pagination](https://github.com/getgrav/grav-plugin-pagination) plugin.
+Supports Disqus or [Comments](https://github.com/getgrav/grav-plugin-comments) plugin.
+And i highly recommend [Grav Admin](https://github.com/getgrav/grav-plugin-admin) plugin.
 
 # Skeleton
 The theme works best in combination with appropriate content and configuration. Please check out the [Mediator Skeleton Package](https://github.com/getgrav/grav-skeleton-mediator-site).
