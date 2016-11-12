@@ -36,19 +36,25 @@
                         </a>
                     </figure>
                 {% endif %}
-                <section class="author">
-                    <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
-    
-                    {%if site.author.bio %}
-                        <p>{{site.author.bio}}</p>
-                    {% else %}
-                        <p>Read <a href="{{base_url}}">more posts</a> by this author.</p>
-                    {% endif %}
-                    <div class="author-meta">
-                        {% if site.author.location %}<span class="author-location icon-location">{{site.author.location}}</span>{% endif %}
-                        {% if site.author.website %}<span class="author-link icon-link"><a href="{{site.author.website}}">{{site.author.website}}</a></span>{% endif %}
-                    </div>
-                </section>
+        <section class="author">
+           {%if page.taxonomy.author %}
+              {% for author in page.taxonomy.author %}
+                 <h4><a href="{{base_url}}/author:{{ author }}">{{ author }}</a></h4>
+                 <p><a href="{{base_url}}/author:{{ author }}">more posts</a> of {{ author }}</p>
+              {% endfor %}
+           {% else %}
+              <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
+              {%if site.author.bio %}
+                 <p>{{site.author.bio}}</p>
+              {% else %}
+                 <p>Read <a href="{{base_url}}">more posts</a> by this author.</p>
+              {% endif %}
+           {% endif %}
+           <div class="author-meta">
+           {% if site.author.location %}<span class="author-location icon-location">{{site.author.location}}</span>{% endif %}
+           {% if site.author.website %}<span class="author-link icon-link"><a href="{{site.author.website}}">{{site.author.website}}</a></span>{% endif %}
+           </div>
+        </section>
             {% endif %}
 
             <section class="share">
@@ -66,7 +72,9 @@
                     <span class="hidden">Google+</span>
                 </a>
             </section>
-
+           {% if config.plugins.comments.enabled %}
+              {% include 'partials/comments.html.twig' with {'page': page} %}
+           {% endif %}
         </footer>
 
     </article>
