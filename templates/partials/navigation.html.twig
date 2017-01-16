@@ -1,6 +1,6 @@
 <input type="checkbox" id="show-menu" class="show-menu" />
 <div class="nav">
-    <h3 class="nav-title">Menu</h3>
+    <h3 class="nav-title">{{ 'THEME_MASONRY.MENU_TITLE'|t }}</h3>
     <a href="#" class="nav-close">
         <span class="hidden">Close</span>
     </a>
@@ -12,6 +12,6 @@
         {% endif %}
         {% endfor %}
     </ul>
-    <a class="subscribe-button icon-feed" href="{{ base_url }}/blog.rss">Subscribe</a>
+    <a class="subscribe-button icon-feed" href="{{ base_url }}/blog.rss">{{ 'THEME_MASONRY.BLOG.SUBSCRIBE'|t }}</a>
 </div>
 <span class="nav-cover"></span>
