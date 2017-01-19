@@ -120,6 +120,11 @@ image: yourimagefile.png
 Lorem ipsum your post....
 ```
 
+## Language
+
+English and German languages are supported by default. If you want to add your language, edit the `languages.yaml` file. Don't forget to send a Pull Request :)
+
+
 # Updating
 
 As development for the Masonry theme continues, new versions may become available that add additional features and functionality, improve compatibility with newer Grav releases, and generally provide a better user experience. Updating Masonry is easy, and can be done through Grav's GPM system, as well as manually.
