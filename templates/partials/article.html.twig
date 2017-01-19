@@ -7,8 +7,8 @@
     <header class="post-header">
         <h2 class="post-title" itemprop="name"><a href="{{post.url}}" itemprop="url">{{post.title}}</a></h2>
     </header>
-    <section class="post-excerpt" itemprop="description">        
-        <p>{{ post.content | striptags | truncate(140) }} <a class="read-more" href="{{post.url}}">Read More</a></p>
+    <section class="post-excerpt" itemprop="description">
+        <p>{{ post.content | striptags | truncate(140) }} <a class="read-more" href="{{post.url}}">{{ 'THEME_MASONRY.BLOG.CONTINUE_READING'|t }}</a></p>
     </section>
     <footer class="post-meta">
         {% if post.taxonomy.tag|length > 0 %}

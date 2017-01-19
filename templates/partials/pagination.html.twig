@@ -5,11 +5,11 @@
 <nav class="pagination" role="navigation">
     {% if pagination.hasNext %}
         {% set url = (base_url ~ pagination.params ~ pagination.nextUrl)|replace({'//':'/'}) %}
-        <a class="older-posts" href="{{ url }}">&larr; Older posts</a>
+        <a class="older-posts" href="{{ url }}">&larr; {{ 'THEME_MASONRY.BLOG.PAGINATION.OLDER'|t }}</a>
     {% endif %}
-    <span class="page-number">Page {{ uri.currentPage }} of {{ pagination|length }}</span>
+    <span class="page-number">{{ 'THEME_MASONRY.BLOG.PAGINATION.PAGE.PAGE'|t }} {{ uri.currentPage }} {{ 'THEME_MASONRY.BLOG.PAGINATION.PAGE.OF'|t }} {{ pagination|length }}</span>
     {% if pagination.hasPrev %}
         {% set url =  (base_url ~ pagination.params ~ pagination.prevUrl)|replace({'//':'/'}) %}
-        <a class="newer-posts" href="{{ url }}">Newer posts &rarr;</a>
+        <a class="newer-posts" href="{{ url }}">{{ 'THEME_MASONRY.BLOG.PAGINATION.NEWER'|t }} &rarr;</a>
     {% endif %}
 </nav>

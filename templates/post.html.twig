@@ -7,7 +7,7 @@
 {% block content %}
 
 {% include 'partials/header.html.twig' %}
- 
+
 <main class="content" role="main">
     <article class="post">
         <header class="post-header">
@@ -24,7 +24,7 @@
         <section class="post-content">
             {{content}}
             <div id="disqus_thread"></div>
-            <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+            <noscript><a href="https://disqus.com/?ref_noscript" rel="nofollow">{{ 'THEME_MASONRY.DISQUS.NOSCRIPT'|t }}</a></noscript>
         </section>
 
         <footer class="post-footer">
@@ -40,14 +40,14 @@
            {%if page.taxonomy.author %}
               {% for author in page.taxonomy.author %}
                  <h4><a href="{{base_url}}/author:{{ author }}">{{ author }}</a></h4>
-                 <p><a href="{{base_url}}/author:{{ author }}">more posts</a> of {{ author }}</p>
+                 <p><a href="{{base_url}}/author:{{ author }}">{{ 'THEME_MASONRY.BLOG.POST.MORE.SPEC_AUTHOR'|t }} {{ author }}.</a></p>
               {% endfor %}
            {% else %}
               <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
               {%if site.author.bio %}
                  <p>{{site.author.bio}}</p>
               {% else %}
-                 <p>Read <a href="{{base_url}}">more posts</a> by this author.</p>
+                 <p><a href="{{base_url}}">{{ 'THEME_MASONRY.BLOG.POST.MORE.AUTHOR'|t }}</a></p>
               {% endif %}
            {% endif %}
            <div class="author-meta">
@@ -58,7 +58,7 @@
             {% endif %}
 
             <section class="share">
-                <h4>Share this post</h4>
+                <h4>{{ 'THEME_MASONRY.BLOG.POST.SHARE'|t }}</h4>
                 <a class="icon-twitter" href="https://twitter.com/share?text={{page.title | escape}}&amp;url={{page.url(true)}}"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <span class="hidden">Twitter</span>

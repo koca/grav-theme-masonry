@@ -1,5 +1,5 @@
-{% extends 'partials/base.html.twig' %} 
-{% set collection = page.collection() %} 
+{% extends 'partials/base.html.twig' %}
+{% set collection = page.collection() %}
 
 {% block content %}
 
@@ -10,7 +10,7 @@
         {% endif %}
 
         <a class="menu-button icon-menu" href="#">
-            <label for="show-menu" class="word">Menu</label>
+            <label for="show-menu" class="word">{{ 'THEME_MASONRY.MENU_TITLE'|t }}</label>
         </a>
     </nav>
     <div class="vertical">
@@ -28,8 +28,8 @@
             {% for post in collection %} {% include 'partials/article.html.twig' %} {% endfor %}
         </section>
     </div>
-    {% if config.plugins.pagination.enabled and collection.params.pagination %} 
-        {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination':collection.params.pagination} %} 
+    {% if config.plugins.pagination.enabled and collection.params.pagination %}
+        {% include 'partials/pagination.html.twig' with {'base_url': page.url, 'pagination':collection.params.pagination} %}
     {% endif %}
 </main>
 
