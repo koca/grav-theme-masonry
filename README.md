@@ -2,7 +2,7 @@
 
 ![Masonry](assets/readme.png)
 
-The **Masonry** theme for Grav is a direct port of the [Masonry Theme for Ghost](https://github.com/chris-brown/Masonry-Ghost-Theme) designed by [Chris Brown](http://blog.zirafon.com/about).
+The **Masonry** theme for Grav is a direct port of the [Masonry Theme for Ghost](https://github.com/chris-brown/Masonry-Ghost-Theme) designed by [Chris Brown](http://blog.zirafon.org/about).
 
 # Installation
 
@@ -40,7 +40,7 @@ The theme works best in combination with appropriate content and configuration. 
 |   |── header.jpg (blog cover image if you want to)
 |   |
 │   ├── post-with-cover (folder for a blog post)
-│   │   ├── post.md 
+│   │   ├── post.md
 │   │   └── unsplash.jpg
 │   ├── tooling-grunt (folder for a blog post)
 │   │   └── post.md
@@ -164,4 +164,4 @@ Once this is done, you should be able to see the new theme on the frontend. Keep
 
 ## License
 
-This theme is free and open source software, distributed under the [MIT License](/LICENSE) 
+This theme is free and open source software, distributed under the [MIT License](/LICENSE)
