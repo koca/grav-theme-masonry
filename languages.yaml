@@ -6,7 +6,7 @@ en:
       CONTINUE_READING: Read More
       POST:
         MORE:
-          AUTHOR: More posts by this author.
+          AUTHOR: More posts by this author
           SPEC_AUTHOR: More posts by
         SHARE: Share this post
       PAGINATION:
@@ -30,7 +30,7 @@ de:
       CONTINUE_READING: Weiterlesen
       POST:
         MORE:
-          AUTHOR: Mehr Beiträge.
+          AUTHOR: Mehr Beiträge
           SPEC_AUTHOR: Mehr Beiträge von
         SHARE: Beitrag teilen
       PAGINATION:
@@ -38,7 +38,7 @@ de:
         NEWER: Neuere Beiträge
         PAGE:
           PAGE: Seite
-          OF: of
+          OF: von
       SUBSCRIBE: Abonnieren
     DISQUS:
       NOSCRIPT: Bitte aktivieren Sie JavaScript um Disquis-Kommentare anschauen zu können.
