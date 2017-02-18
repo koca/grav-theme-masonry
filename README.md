@@ -122,7 +122,7 @@ Lorem ipsum your post....
 
 ## Language
 
-English and German languages are supported by default. If you want to add your language, edit the `languages.yaml` file. Don't forget to send a Pull Request :)
+English, German and French languages are supported out of the box. If you want to add your language, edit the `languages.yaml` file. And don't forget to send a Pull Request :)
 
 
 # Updating
