@@ -44,3 +44,27 @@ de:
       NOSCRIPT: Bitte aktivieren Sie JavaScript um Disquis-Kommentare anschauen zu können.
     ERROR:
       404: Diese Seite existiert nicht (Fehler 404)
+      
+
+fr:
+  THEME_MASONRY:
+    HOME: Accueil
+    MENU_TITLE: Menu
+    BLOG:
+      CONTINUE_READING: Lire la suite
+      POST:
+        MORE:
+          AUTHOR: Plus de posts
+          SPEC_AUTHOR: Plus de posts de
+        SHARE: Partager ce post
+      PAGINATION:
+        OLDER: Posts plus anciens
+        NEWER: Posts plus récents
+        PAGE:
+          PAGE: Page
+          OF: de
+      SUBSCRIBE: S'abonner
+    DISQUS:
+      NOSCRIPT: Veuillez activer JavaScript pour afficher les commentaires Disquis.
+    ERROR:
+      404: 404, Page introuvable
