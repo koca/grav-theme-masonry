@@ -68,3 +68,27 @@ fr:
       NOSCRIPT: Veuillez activer JavaScript pour afficher les commentaires Disquis.
     ERROR:
       404: 404, Page introuvable
+
+
+pl:
+  THEME_MASONRY:
+    HOME: Strona domowa
+    MENU_TITLE: Menu
+    BLOG:
+      CONTINUE_READING: Czytaj więcej
+      POST:
+        MORE:
+          AUTHOR: Więcej artykułów tego autora
+          SPEC_AUTHOR: Więcej artykułów od
+        SHARE: Udostępnij ten artykuł
+      PAGINATION:
+        OLDER: Stare artykuły
+        NEWER: Nowe artykuły
+        PAGE:
+          PAGE: Strona
+          OF: z
+      SUBSCRIBE: Subskrybuj
+    DISQUS:
+      NOSCRIPT: Proszę włączyć JavaScript, aby przeglądać komentarze obsługiwane przez Disqus.
+    ERROR:
+      404: 404, Nie znaleziono strony
