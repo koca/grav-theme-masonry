@@ -12,5 +12,8 @@ keywords: masonry, grid, theme, modern, fast, responsive, blog
 bugs: https://github.com/koca/grav-theme-masonry/issues
 license: MIT
 
+dependencies:
+- { name: auto-author, version: '>=0.2.0' }
+
 form:
   validation: loose
