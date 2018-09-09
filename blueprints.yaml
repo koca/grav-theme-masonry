@@ -1,5 +1,5 @@
 name: Masonry
-version: 1.5.0
+version: 1.6.0
 description: "Masonry, grid-based blog theme by Chris Brown ported to **Grav**"
 icon: th-large
 author:
@@ -11,6 +11,9 @@ demo: https://github.com/koca/grav-theme-masonry
 keywords: masonry, grid, theme, modern, fast, responsive, blog
 bugs: https://github.com/koca/grav-theme-masonry/issues
 license: MIT
+
+dependencies:
+- { name: auto-author, version: '>=0.2.0' }
 
 form:
   validation: loose
