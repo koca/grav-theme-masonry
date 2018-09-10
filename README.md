@@ -28,6 +28,7 @@ You should now have all the theme files under
 This theme requires [Pagination](https://github.com/getgrav/grav-plugin-pagination) plugin.
 Supports Disqus or [Comments](https://github.com/getgrav/grav-plugin-comments) plugin.
 And i highly recommend [Grav Admin](https://github.com/getgrav/grav-plugin-admin) plugin.
+Also, the [auto-author plugin](https://github.com/nacon/grav-auto-author) is supported.
 
 # Skeleton
 The theme works best in combination with appropriate content and configuration. Please check out the [Mediator Skeleton Package](https://github.com/getgrav/grav-skeleton-mediator-site).

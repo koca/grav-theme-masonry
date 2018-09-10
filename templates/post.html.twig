@@ -28,26 +28,42 @@
         </section>
 
         <footer class="post-footer">
-            {%if site.author %}
-                {%if site.author.image %}
+            {%if header.author %}
+                {%if header.avatar %}
                     <figure class="author-image">
-                        <a class="img" href="{{base_url}}" style="background-image: url({{ theme_url }}/images/{{ site.author.image }})">
-                            <span class="hidden">{{site.author.name}}'s Picture</span>
+                        <a class="img" href="{{base_url}}/author/{{header.author}}" style="background-image: url({{header.avatar}})">
+                            <span class="hidden">{{header.author}}'s Picture</span>
                         </a>
                     </figure>
                 {% endif %}
         <section class="author">
-           {%if page.taxonomy.author %}
-              {% for author in page.taxonomy.author %}
-                 <h4><a href="{{base_url}}/author:{{ author }}">{{ author }}</a></h4>
-                 <p><a href="{{base_url}}/author:{{ author }}">{{ 'THEME_MASONRY.BLOG.POST.MORE.SPEC_AUTHOR'|t }} {{ author }}.</a></p>
-              {% endfor %}
-           {% else %}
-              <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
-              {%if site.author.bio %}
-                 <p>{{site.author.bio}}</p>
+           {% if config.plugins.auto-author.enabled %}
+              {%if header.author %}
+                 {% set user = filecontent("/user/accounts/" ~ header.author ~ ".yaml")|yaml_decode %}
+                 <h4>{{user.fullname}}</h4>
+                 <p>{{header.author}}, {{user.title}}</p>
+                 <p><a href="{{base_url}}/author:{{ header.author }}">{{ 'THEME_MASONRY.BLOG.POST.MORE.SPEC_AUTHOR'|t }} {{ user.fullname }}.</a></p>
               {% else %}
-                 <p><a href="{{base_url}}">{{ 'THEME_MASONRY.BLOG.POST.MORE.AUTHOR'|t }}</a></p>
+                 <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
+                 {%if site.author.bio %}
+                    <p>{{site.author.bio}}</p>
+                 {% else %}
+                    <p><a href="{{base_url}}">{{ 'THEME_MASONRY.BLOG.POST.MORE.AUTHOR'|t }}</a></p>
+                 {% endif %}
+              {% endif %}
+           {% else %}
+              {%if page.taxonomy.author %}
+                 {% for author in page.taxonomy.author %}
+                    <h4><a href="{{base_url}}/author:{{ author }}">{{ author }}</a></h4>
+                    <p><a href="{{base_url}}/author:{{ author }}">{{ 'THEME_MASONRY.BLOG.POST.MORE.SPEC_AUTHOR'|t }} {{ author }}.</a></p>
+                 {% endfor %}
+              {% else %}
+                 <h4><a href="{{base_url}}">{{site.author.name}}</a></h4>
+                 {%if site.author.bio %}
+                    <p>{{site.author.bio}}</p>
+                 {% else %}
+                    <p><a href="{{base_url}}">{{ 'THEME_MASONRY.BLOG.POST.MORE.AUTHOR'|t }}</a></p>
+                 {% endif %}
               {% endif %}
            {% endif %}
            <div class="author-meta">
