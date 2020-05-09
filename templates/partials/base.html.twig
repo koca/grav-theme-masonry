@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-<html lang="{{ grav.language.getLanguage ?: 'en' }}">
-    <head>
+ <html lang="{{ grav.language.getActive ?: grav.config.site.default_lang }}">
+     <head>
         {% block head %}
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="HandheldFriendly" content="True" />
-        {% if header.description %}
-        <meta name="description" content="{{ header.description }}">
-        {% else %}
-        <meta name="description" content="{{ site.description }}">
-        {% endif %}
-        {% if header.robots %}
-        <meta name="robots" content="{{ header.robots }}">
-        {% endif %}
-
+        {% include 'partials/metadata.html.twig' %}
         <link rel="icon" type="image/png" href="{{ theme_url }}/images/favicon.png">
 
-        {% for meta in page.metadata %}
-        <meta {% if meta.name %}name="{{ meta.name }}" {% endif %}{% if meta.http_equiv %}http-equiv="{{ meta.http_equiv }}" {% endif %}{% if meta.charset %}charset="{{ meta.charset }}" {% endif %}{% if meta.property %}property="{{ meta.property }}" {% endif %}{% if meta.content %}content="{{ meta.content }}" {% endif %}/>
-        {% endfor %}
-
         <title>{% if header.title %}{{ header.title }} | {% endif %}{{ site.title }}</title>
-
-        {# Fonts #}
-        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400" />
-
+        
         {% block stylesheets %}
-            {% do assets.add('theme://css/screen.css',101) %}
-            {{ assets.css() }}
+            {# Fonts #}
+            {% do assets.addCss('//fonts.googleapis.com/css?family=Merriweather:300,700,700italic,300italic|Open+Sans:700,400') %}
+            {% do assets.addCss('theme://css/screen.css') %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% do assets.addJs('jquery', {group:'bottom', priority: 101}) %}
+            {% do assets.addJs('theme://js/index.js', {group:'bottom'}) %}
+            {% do assets.addJs('theme://js/prism.js', {group:'bottom'}) %}
+
+            {% if browser.getBrowser == 'msie' and browser.getVersion >= 8 and browser.getVersion <= 9 %}
+                {% do assets.addJs('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js', {group:'bottom'}) %} 
+                {% do assets.addJs('https://oss.maxcdn.com/respond/1.4.2/respond.min.js', {group:'bottom'}) %}
+            {% endif %}
+
+        {% endblock %}
+        
+        {% block assets deferred %}
+            {{ assets.css()|raw }}
+            {{ assets.js()|raw }}
         {% endblock %}
 
         {% endblock head %}
@@ -51,25 +54,8 @@
             </footer>
         </div>
 
-        {# Footer JS #}
-        {% block javascripts %}
-            {% do assets.add('jquery', 101) %}
-
-            {# Main JS #}
-            {% do assets.add('theme://js/index.js') %}
-
-            {# Highlighting #}
-            {% do assets.add('theme://js/prism.js') %}
-
-            {# ... #}
-            {% if browser.getBrowser == 'msie' and browser.getVersion >= 8 and browser.getVersion <= 9 %}
-                {% do assets.add('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') %}
-                {% do assets.add('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') %}
-            {% endif %}
-
-            {{ assets.js() }}
+        {% block bottom %}
+            {{ assets.js('bottom')|raw }}
         {% endblock %}
-
     </body>
-    {% block bottom %}{% endblock %}
 </html>
